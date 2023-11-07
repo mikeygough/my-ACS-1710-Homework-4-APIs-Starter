@@ -58,9 +58,6 @@ def results():
     # Uncomment the line below to see the results of the API call!
     pp.pprint(result_json)
 
-    # For the sunrise & sunset variables, I would recommend to turn them into
-    # datetime objects. You can do so using the `datetime.fromtimestamp()` 
-    # function.
     context = {
         'date': datetime.now(),
         'city': result_json['name'],
@@ -69,7 +66,7 @@ def results():
         'humidity': result_json['main']['humidity'],
         'wind_speed': result_json['wind']['speed'],
         'sunrise': datetime.fromtimestamp(result_json['sys']['sunrise']),
-        'sunset': datetime.fromtimestamp(result_json['sys']['sunrise']),
+        'sunset': datetime.fromtimestamp(result_json['sys']['sunset']),
         'units_letter': get_letter_for_units(units)
     }
 

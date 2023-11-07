@@ -3,20 +3,14 @@
 
 <section>
     <h1>Weather in {{ city }}</h1>
-    <p style="color: red;">[TODAYS_DATE (e.g. Saturday, August 29, 2020)]</p>
-    <p>on {{ date }}</p>
-    
-    {#
-        TODO: Add the temperature, description, humidity, wind speed, sunrise,
-        & sunset below to replace the [ ].
-    #}
+    <p>on {{ date.strftime("%A, %B %d, %Y") }}</p>
     <ul>
-        <li>Temperature: {{ temp }} [UNITS] </li>
+        <li>Temperature: {{ temp }} {{ units_letter }} </li>
         <li>Description: {{ description }} </li>
         <li>Humidity: {{ humidity }} % </li>
         <li>Wind speed: {{ wind_speed }} miles/hour </li>
-        <li>Sunrise: {{ sunrise }} </li>
-        <li>Sunset: {{ sunset }} </li>
+        <li>Sunrise: {{ sunrise.strftime("%H:%M:%S") }} </li>
+        <li>Sunset: {{ sunset.strftime("%H:%M:%S") }} </li>
     </ul>
     
 </section>
