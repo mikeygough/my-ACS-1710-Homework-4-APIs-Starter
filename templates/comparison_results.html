@@ -49,11 +49,11 @@
     <h3> Humidity Comparison </h3>
     {% if city_1_info['humidity'] > city_2_info['humidity'] %}
         <p>
-            The humidity in {{ city_1_info['city'] }} is {{ ((city_1_info['humidity'] - city_2_info['humidity'])|float)|round(2) }} GREATER than in {{ city_2_info['city'] }}.
+            The humidity in {{ city_1_info['city'] }} is {{ ((city_1_info['humidity'] - city_2_info['humidity'])|float)|round(2) }} percentage points GREATER than in {{ city_2_info['city'] }}.
         </p>
     {% elif city_1_info['humidity'] < city_2_info['humidity'] %}
         <p>
-            The humidity in {{ city_1_info['city'] }} is {{ ((city_2_info['humidity'] - city_1_info['humidity'])|float)|round(2) }} LESS than in {{ city_2_info['city'] }}.
+            The humidity in {{ city_1_info['city'] }} is {{ ((city_2_info['humidity'] - city_1_info['humidity'])|float)|round(2) }} percentage points LESS than in {{ city_2_info['city'] }}.
         </p>
     {% else %}
         <p>
@@ -64,11 +64,11 @@
     <h3> Wind Speed Comparison </h3>
     {% if city_1_info['wind_speed'] > city_2_info['wind_speed'] %}
         <p>
-            The wind speed in {{ city_1_info['city'] }} is {{ ((city_1_info['wind_speed'] - city_2_info['wind_speed'])|float)|round(2) }} GREATER than in {{ city_2_info['city'] }}.
+            The wind speed in {{ city_1_info['city'] }} is {{ ((city_1_info['wind_speed'] - city_2_info['wind_speed'])|float)|round(2) }} miles/hour GREATER than in {{ city_2_info['city'] }}.
         </p>
     {% elif city_1_info['wind_speed'] < city_2_info['wind_speed'] %}
         <p>
-            The wind speed in {{ city_1_info['city'] }} is {{ ((city_2_info['wind_speed'] - city_1_info['wind_speed'])|float)|round(2) }} LESS than in {{ city_2_info['city'] }}.
+            The wind speed in {{ city_1_info['city'] }} is {{ ((city_2_info['wind_speed'] - city_1_info['wind_speed'])|float)|round(2) }} miles/hour LESS than in {{ city_2_info['city'] }}.
         </p>
     {% else %}
         <p>

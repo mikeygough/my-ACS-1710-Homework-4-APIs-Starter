@@ -21,6 +21,7 @@ pp = PrettyPrinter(indent=4)
 
 API_KEY = os.getenv("API_KEY")
 API_URL = "http://api.openweathermap.org/data/2.5/weather"
+IMAGE_URL = "https://openweathermap.org/img/wn/"
 
 
 ################################################################################
@@ -78,7 +79,7 @@ def results():
     params = {"appid": API_KEY, "q": city, "units": units}
 
     result_json = requests.get(API_URL, params=params).json()
-
+    icon = result_json['weather'][0]['icon']
     # Uncomment the line below to see the results of the API call!
     # pp.pprint(result_json)
 
@@ -92,6 +93,7 @@ def results():
         "sunrise": datetime.fromtimestamp(result_json["sys"]["sunrise"]),
         "sunset": datetime.fromtimestamp(result_json["sys"]["sunset"]),
         "units_letter": get_letter_for_units(units),
+        "icon": IMAGE_URL + icon + '@2x.png'
     }
 
     return render_template("results.html", **context)
