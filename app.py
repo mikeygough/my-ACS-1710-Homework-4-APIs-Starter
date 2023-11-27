@@ -77,11 +77,14 @@ def results():
     units = request.args.get("units")
 
     params = {"appid": API_KEY, "q": city, "units": units}
-
+    
     result_json = requests.get(API_URL, params=params).json()
+    
+    # error handling
+    if 'city not found' in result_json.values():
+        return render_template("error_page.html")
+    
     icon = result_json['weather'][0]['icon']
-    # Uncomment the line below to see the results of the API call!
-    # pp.pprint(result_json)
 
     context = {
         "date": datetime.now(),
@@ -107,9 +110,16 @@ def comparison_results():
     city2 = request.args.get("city2")
     units = request.args.get("units")
 
-    city_1_info = format_weather_response(get_weather(city1, units), units)
-    city_2_info = format_weather_response(get_weather(city2, units), units)
+    city_1_info = get_weather(city1, units)
+    city_2_info = get_weather(city2, units)
+    
+    # error handling
+    if 'city not found' in city_1_info.values() or 'city not found' in city_2_info.values():
+        return render_template("error_page.html")
 
+    # format
+    city_1_info = format_weather_response(city_1_info, units)
+    city_2_info = format_weather_response(city_2_info, units)
     context = {
         "date": datetime.now(),
         "city_1_info": city_1_info,
